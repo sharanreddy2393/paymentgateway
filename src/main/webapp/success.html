@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+Success !!!!!!!!!
+
+<script type="text/javascript">
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+    
+}
+var number = getUrlVars()["payment_status"];
+alert(number);
+</script>
+
+${number}
+
+</body>
+
+
+</html>
