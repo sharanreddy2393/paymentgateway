@@ -3,6 +3,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -17,8 +19,31 @@ function getUrlVars() {
     return vars;
     
 }
-var number = getUrlVars()["payment_status"];
-alert(number);
+var paymentStatus = getUrlVars()["payment_status"];
+doAjaxPost();
+function doAjaxPost() {  
+$.ajax({
+	type : "POST",
+	contentType : "application/json",
+    url : "/savepayment",
+	dataType : 'json',
+	timeout : 100000,
+    data : {            
+        myData: {
+           "paymentStatus": paymentStatus
+        }            
+    }, 
+    success : function(e) {
+    	console.log("SUCCESS: ", e);
+		display(e);
+    },
+    error : function(e) {
+       alert('Error: ' + e);
+       display(e);
+    }
+}); 
+}
+alert(paymentStatus);
 </script>
 
 ${number}

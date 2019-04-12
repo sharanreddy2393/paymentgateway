@@ -53,7 +53,7 @@ public class PaymentController {
 		order.setDescription("This is a test transaction.");
 		order.setRedirectUrl("http://localhost:8083/success.html");
 		order.setWebhookUrl("http://www.google.com/");
-		order.setTransactionId("dxg2389");
+		order.setTransactionId("dxg23999992");
 		String url = "";
 		PaymentOrderResponse paymentOrderResponse = null;
 		try {
@@ -75,5 +75,14 @@ public class PaymentController {
 		System.out.println(paymentOrderResponse.getPaymentOrder().getStatus());
 		
 		
+	}
+	@RequestMapping(value = "/savepayment", method = RequestMethod.POST)
+	public void savePaymentdetails(@RequestBody String paymentStatus, HttpServletResponse response) throws IOException {
+	System.out.println("saving the details"+ paymentStatus);
+	String payment = paymentStatus.substring(26);
+	System.out.println(payment);
+	if(payment.equals("Credit")) {
+		System.out.println("true");
+	}
 	}
 }
